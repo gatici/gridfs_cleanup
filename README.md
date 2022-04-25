@@ -33,4 +33,7 @@ Supported operations:
 
 ```bash
 python3 -m gridfsclean --uri mongodb://10.152.183.118:27017/ --operation show
+python3 -m gridfsclean --uri mongodb://10.152.183.118:27017/ --operation rename
+python3 -m gridfsclean --uri mongodb://10.152.183.118:27017/ --operation revert
+python3 -m gridfsclean --uri mongodb://10.152.183.118:27017/ --operation delete
 ```
