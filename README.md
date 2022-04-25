@@ -4,9 +4,17 @@ This tools helps to find, rename, revert and delete the unused Gridfs files in O
 
 Available operations:
 - show: show unused files
-- rename: rename unusued files
+- rename: rename unused files
 - revert: revert back to original filename 
 - delete delete all unused files
+
+## Create Virtual Environment
+
+```bash
+python3 -m pip install --user virtualenv
+python3 -m venv env
+source env/bin/activate
+```
 
 ## Clone the repository
 
@@ -19,7 +27,8 @@ git clone https://github.com/gatici/gridfs_cleanup.git && cd gridfs_cleanup
 This tool can be installed into your python3 environment by running:
 
 ```bash
-sudo python3 setup.py install
+env_python=`which python`
+sudo $env_python setup.py install
 ```
 
 ## Usage
@@ -32,8 +41,8 @@ Supported operations:
 - delete
 
 ```bash
-python3 -m gridfsclean --uri mongodb://10.152.183.118:27017/ --operation show
-python3 -m gridfsclean --uri mongodb://10.152.183.118:27017/ --operation rename
-python3 -m gridfsclean --uri mongodb://10.152.183.118:27017/ --operation revert
-python3 -m gridfsclean --uri mongodb://10.152.183.118:27017/ --operation delete
+$env_python -m gridfsclean --uri mongodb://10.152.183.118:27017/ --operation show
+$env_python -m gridfsclean --uri mongodb://10.152.183.118:27017/ --operation rename
+$env_python -m gridfsclean --uri mongodb://10.152.183.118:27017/ --operation revert
+$env_python-m gridfsclean --uri mongodb://10.152.183.118:27017/ --operation delete
 ```
