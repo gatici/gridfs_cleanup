@@ -128,12 +128,12 @@ class GridfsClean:
         if self.unused_files:
             # Rename files
             for item in list(self.unused_files):
-                renamed_item = item + "_renamed"
+                renamed_item = "renamed_" + item
                 item_cursor = self.fs_bucket.find(
                     {"filename": {"$regex": "^{}".format(item)}}, no_cursor_timeout=True
                 )
                 for src_file in item_cursor:
-                    if "_renamed" not in src_file.filename:
+                    if "renamed_" not in src_file.filename:
                         self.fs_bucket.rename(src_file._id, src_file.filename.replace(item, renamed_item, 1))
                         replace_count += 1
             print(f"Totally, {replace_count} files renamed")
@@ -144,11 +144,11 @@ class GridfsClean:
         """
         replace_count = 0
         renamed_cursor = self.fs_bucket.find(
-            {"filename": {"$regex": "_renamed"}}, no_cursor_timeout=True
+            {"filename": {"$regex": "^{}".format("renamed_")}}, no_cursor_timeout=True
         )
         for renamed_file in renamed_cursor:
             renamed_filename = renamed_file.filename
-            original_filename = renamed_file.filename.replace("_renamed", "")
+            original_filename = renamed_file.filename.replace("renamed_", "")
             self.fs_bucket.rename(
                 renamed_file._id,
                 renamed_file.filename.replace(renamed_filename, original_filename, 1),
