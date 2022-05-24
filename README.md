@@ -27,7 +27,7 @@ git clone https://github.com/gatici/gridfs_cleanup.git && cd gridfs_cleanup
 This tool can be installed into your python3 environment by running:
 
 ```bash
-alias env_python=`which python`
+env_python=`which python`
 sudo $env_python setup.py install
 ```
 

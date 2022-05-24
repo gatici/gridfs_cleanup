@@ -121,7 +121,7 @@ class GridfsClean:
         self.clean()
 
     def rename_files(self) -> None:
-        """Rename the filename of items by  replacing id with  id + "_renamed".
+        """Rename the filename of items by  replacing id with "_renamed" + id .
         """
         replace_count = 0
         self.find_unused()
